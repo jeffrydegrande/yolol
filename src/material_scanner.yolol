@@ -1,0 +1,12 @@
+if :ScanActive == 0 then goto 10 end
+:Scan=1 
+:if :ScanResults == 0 then goto 10 end
+s="Found: "+:ScanResults+"\n"
+:ScanIndex=0
+if :ScanIndex == :ScanResults then goto 10 end
+s+=:ScanIndex+":"+:ScanMaterial+" "+:ScanVolume+"\n"
+:ScanIndex++ goto6
+// Results
+:Sense=s goto1
+:Sense="nothing found" goto1
+:Sense="disabled" goto1
