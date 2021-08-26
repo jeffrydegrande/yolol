@@ -1,0 +1,1 @@
+:FuelChamberUnitRateLimit = 1000 - :Battery_1 / 10 goto 1

@@ -1,0 +1,15 @@
+sp=25 Kp=0.30 Ki=0.1*0.4 Kd=1.2/0.4 le=0 i=0
+if :ap then :cruise=0 goto 3 else goto 1 end
+f=:RF e=F-sp de=e-le i=i+e ifi>100theni=100end o=Kp*e+Ki*i+Kd*de le=e
+if F>999 or e<2 then goto5 else :fwd=(o>0)*o :bck=(o<0)*-o goto3 end
+:ap=0 :fwd=0 :bck=0 goto1
+
+// https://www.reddit.com/r/starbase/comments/p5mifp/safely_approach_asteroids_with_a_pid_controller/
+// sp is the "set point". The value you want to reach, so the distance to the destination here.
+// Kp is the proportional coefficient. Higher Kp will make you go faster, but too high and you risk crashing.
+// Ki is the integral coefficient. Here it is 0 because it always caused me to crash.
+// Kd is the derivative coefficient. It helps stop if you are going to overshoot the target.
+// e is the error, so the distance to the setpoint
+// le is the last error. The error of the last iteration. It's needed for the derivative part.
+// int is the last int plus the error. It's for the integcal part, so you could remove it here.
+// And o is the output. So high o means faster, negative o means go backwards, you are too far, or are going to go too far.

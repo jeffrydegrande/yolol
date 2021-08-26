@@ -1,4 +1,4 @@
-if :ScanActive == 0 then goto 10 end
+if :ScanActive == 0 then goto 12 end
 :Scan=1 
 :if :ScanResults == 0 then goto 10 end
 s="Found: "+:ScanResults+"\n"

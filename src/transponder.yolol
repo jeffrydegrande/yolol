@@ -1,0 +1,3 @@
+T=0
+if :Transponder != 0 then T=2 end
+:TransponderButton=T :TransponderButtonBlinking=T goto1
